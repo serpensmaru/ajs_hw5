@@ -3,9 +3,12 @@ export function getStatusHealth(ojbStatus) {
   if (health > 50) {
     return 'healthy';
   }
-  return health < 15 ? 'critical' : 'wounded';
+  if (health < 15) {
+    return 'critical';
+  }
+  return 'wounded';
 }
 
 export function sortedListHeroes(listParams) {
-  return listParams.sort((a, b) => parseFloat(b.health) - parseFloat(a.health));
+  return listParams.sort((a, b) => b.health - a.health);
 }
